@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
 
 class Login extends Component {
 
@@ -17,13 +18,22 @@ class Login extends Component {
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.email);
+        console.log(this.state.email);
+        console.log(this.state.password);
         event.preventDefault();
+        var credential = {
+            'email' : this.state.email,
+            'password' : this.state.password
+        }
+
+        console.log(this.props);
+        this.props.loginReq(credential)
     }
 
     render() {
         return (
             <div>
+                <p> <Link to="/Signup"> Signup </Link> </p>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Name:
